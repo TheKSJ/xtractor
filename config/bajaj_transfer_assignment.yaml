@@ -1,0 +1,31 @@
+company: "Bajaj Finance Limited"
+document_type: "annual_report"
+reporting_period_end: "2026-03-31"
+statement_scope: "standalone"
+
+source_file: "data/raw/bajaj_finance_annual_report_2026.pdf"
+
+pdf_page_number: 391
+pdf_page_index: 390
+printed_page_number: 358
+
+note: "58(I)(a)"
+table_title: "Details of transfer through assignment in respect of loans not in default"
+
+expected_years:
+  - 2026
+  - 2025
+
+expected_row_count: 6
+expected_value_columns: 4
+
+known_issues:
+  - "Each year contains two value columns, but the subcolumn headings are not visible. Preserve them as unidentified columns."
+
+exclude_tables:
+  - "58(I)(b) Details of loans acquired through assignment"
+  
+
+
+
+
