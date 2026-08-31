@@ -3,7 +3,7 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 
-from extract_bajaj_transfer_assignment import (
+from extract_transfer_assignment import (
     ExtractionError,
     extract_document,
     load_config,

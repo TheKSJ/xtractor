@@ -1,0 +1,14 @@
+{
+  "company": "Bajaj Finance Limited",
+  "reporting_period": "Year ended 31 March 2026",
+  "statement_scope": "standalone",
+  "source_document_id": "bajaj_finance_fy2025_26_standalone",
+  "source_manifest_file": "config/source_manifest.yaml",
+  "source_filename": "AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf",
+  "source_file": "data/raw/AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf",
+  "pdf_page_number": 391,
+  "pdf_page_index": 390,
+  "printed_page_number": 358,
+  "note": "58(I)(a)",
+  "table_title": "Details of transfer through assignment in respect of loans not in default"
+}

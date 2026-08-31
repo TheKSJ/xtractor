@@ -1,0 +1,144 @@
+{
+  "provenance": {
+    "company": "Cholamandalam Investment and Finance Company Limited",
+    "reporting_period": "Year ended 31 March 2026",
+    "statement_scope": "standalone",
+    "source_document_id": "chola_finance_fy2025_26_standalone",
+    "source_manifest_file": "config/source_manifest.yaml",
+    "source_filename": "Annual_Report_FY_2025_26_6e549aa38c.pdf",
+    "source_file": "data/raw/Annual_Report_FY_2025_26_6e549aa38c.pdf",
+    "pdf_page_number": 232,
+    "pdf_page_index": 231,
+    "printed_page_number": 232,
+    "note": "50",
+    "table_title": "III) DETAILS OF LOANS NOT IN DEFAULT TRANSFERRED THROUGH ASSIGNMENT."
+  },
+  "records": [
+    {
+      "original_row_label": "Count of loans accounts assigned",
+      "canonical_metric": "loan_account_count_assigned",
+      "year": 2026,
+      "source_column_position": "column_1",
+      "raw_value": "11,486",
+      "normalized_value": 11486,
+      "unit": "count"
+    },
+    {
+      "original_row_label": "Count of loans accounts assigned",
+      "canonical_metric": "loan_account_count_assigned",
+      "year": 2025,
+      "source_column_position": "column_2",
+      "raw_value": "4,514",
+      "normalized_value": 4514,
+      "unit": "count"
+    },
+    {
+      "original_row_label": "Amount of loan accounts assigned (₹ in crores)",
+      "canonical_metric": "loan_amount_assigned",
+      "year": 2026,
+      "source_column_position": "column_1",
+      "raw_value": "5,878.90",
+      "normalized_value": 5878.9,
+      "unit": "INR_crore"
+    },
+    {
+      "original_row_label": "Amount of loan accounts assigned (₹ in crores)",
+      "canonical_metric": "loan_amount_assigned",
+      "year": 2025,
+      "source_column_position": "column_2",
+      "raw_value": "2,222.00",
+      "normalized_value": 2222,
+      "unit": "INR_crore"
+    },
+    {
+      "original_row_label": "Weighted average maturity (in months)",
+      "canonical_metric": "weighted_average_maturity",
+      "year": 2026,
+      "source_column_position": "column_1",
+      "raw_value": "137",
+      "normalized_value": 137,
+      "unit": "months"
+    },
+    {
+      "original_row_label": "Weighted average maturity (in months)",
+      "canonical_metric": "weighted_average_maturity",
+      "year": 2025,
+      "source_column_position": "column_2",
+      "raw_value": "146",
+      "normalized_value": 146,
+      "unit": "months"
+    },
+    {
+      "original_row_label": "Weighted average holding period (in months)",
+      "canonical_metric": "weighted_average_holding_period",
+      "year": 2026,
+      "source_column_position": "column_1",
+      "raw_value": "21",
+      "normalized_value": 21,
+      "unit": "months"
+    },
+    {
+      "original_row_label": "Weighted average holding period (in months)",
+      "canonical_metric": "weighted_average_holding_period",
+      "year": 2025,
+      "source_column_position": "column_2",
+      "raw_value": "21",
+      "normalized_value": 21,
+      "unit": "months"
+    },
+    {
+      "original_row_label": "Retention of beneficial economic interest (%)",
+      "canonical_metric": "retention_beneficial_economic_interest",
+      "year": 2026,
+      "source_column_position": "column_1",
+      "raw_value": "10%",
+      "normalized_value": 10,
+      "unit": "percent"
+    },
+    {
+      "original_row_label": "Retention of beneficial economic interest (%)",
+      "canonical_metric": "retention_beneficial_economic_interest",
+      "year": 2025,
+      "source_column_position": "column_2",
+      "raw_value": "10%",
+      "normalized_value": 10,
+      "unit": "percent"
+    },
+    {
+      "original_row_label": "Coverage of tangible security",
+      "canonical_metric": "coverage_tangible_security",
+      "year": 2026,
+      "source_column_position": "column_1",
+      "raw_value": "NA",
+      "normalized_value": null,
+      "unit": null
+    },
+    {
+      "original_row_label": "Coverage of tangible security",
+      "canonical_metric": "coverage_tangible_security",
+      "year": 2025,
+      "source_column_position": "column_2",
+      "raw_value": "NA",
+      "normalized_value": null,
+      "unit": null
+    },
+    {
+      "original_row_label": "Rating wise distribution of rated loans",
+      "canonical_metric": "rating_wise_distribution_rated_loans",
+      "year": 2026,
+      "source_column_position": "column_1",
+      "raw_value": "NA",
+      "normalized_value": null,
+      "unit": null
+    },
+    {
+      "original_row_label": "Rating wise distribution of rated loans",
+      "canonical_metric": "rating_wise_distribution_rated_loans",
+      "year": 2025,
+      "source_column_position": "column_2",
+      "raw_value": "NA",
+      "normalized_value": null,
+      "unit": null
+    }
+  ]
+}

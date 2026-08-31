@@ -1,0 +1,78 @@
+document:
+  company: "UGRO Capital Limited"
+  reporting_period: "Year ended 31 March 2026"
+  statement_scope: "standalone"
+
+source:
+  document_id: "ugro_capital_fy2025_26_standalone"
+  manifest_file: "config/source_manifest.yaml"
+  source_file: "data/raw/1779168341-UGRO Capital Ltd_Annual Report 2025-26.pdf"
+  pdf_page_number: 378
+  pdf_page_index: 377
+  printed_page_number: 378
+
+target:
+  note: "64(a)(i)"
+  note_anchors:
+    - "64"
+  table_title: "a. i) Details of transfer through Assignment in respect of loans not in default *:"
+  # The long ii) heading is split into many search rectangles by this PDF's text layer.
+  excluded_table_titles:
+    - "ii)"
+  years:
+    - 2026
+    - 2025
+  source_columns:
+    - "column_1"
+    - "column_2"
+  # Ugro has one reported value per year under the recipient heading To Banks / NBFCs.
+  source_column_layout: "one_per_year"
+  column_edge_strategy: "year_header_midpoints"
+  year_header_tolerance_y: 12.0
+  value_start_x: 350.0
+  last_column_right_edge: 540.0
+  # The text layer splits the first two-line label and groups later rows together;
+  # use the printed 1-7 row numbers as anchors and stop before the footnotes.
+  row_extraction_strategy: "leading_numbered_rows"
+  row_anchor_values:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+  row_anchor_x_max: 115.0
+  row_data_bottom_y: 373.0
+  warn_if_no_visible_subheaders: false
+  # Exact source labels map only where the concepts genuinely match existing metrics.
+  canonical_metric_map:
+    "Aggregate principal outstanding of loans transferred through assignment (Rs. in lakh)": "aggregate_principal_outstanding_loans_transferred_through_assignment"
+    "Aggregate consideration received (Rs. in lakh)": "aggregate_consideration_received"
+    "Weighted average Maturity of Loans (in years)": "weighted_average_maturity"
+    "Weighted average Holding period of Loans (in years)": "weighted_average_holding_period"
+    "Retention of Beneficial economic interest (in %)": "retention_beneficial_economic_interest"
+    "Coverage of tangible security (in % ) **": "coverage_tangible_security"
+    "Rating- wise distribution of rated loans": "rating_wise_distribution_rated_loans"
+  metric_units:
+    aggregate_principal_outstanding_loans_transferred_through_assignment: "INR_lakh"
+    aggregate_consideration_received: "INR_lakh"
+    weighted_average_maturity: "years"
+    weighted_average_holding_period: "years"
+    retention_beneficial_economic_interest: "percent"
+    coverage_tangible_security: "percent"
+    rating_wise_distribution_rated_loans: "text"
+
+expected:
+  row_count: 7
+  value_columns: 2
+  value_cell_count: 14
+
+known_warnings:
+  - "Ugro's principal-outstanding amount is kept distinct from Bajaj/Chola loan amount assigned; definitions require review before aggregation."
+  - "Ugro reports maturity and holding period in years; convert explicitly before comparison with month-denominated values. Ugro maturity is not Bajaj's residual maturity."
+  - "Coverage is computed using only secured loans according to the source footnote; cross-lender comparability is limited."
+  - "Non-Rated is preserved as source text and is not equated with Chola NA or Bajaj Unrated."
+  - "The source footnote says this table excludes loans transferred through co-lending arrangements."
+
+output_file: "outputs/ugro_transfer_assignment.json"

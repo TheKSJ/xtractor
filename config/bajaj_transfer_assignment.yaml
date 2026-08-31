@@ -1,31 +1,47 @@
-company: "Bajaj Finance Limited"
-document_type: "annual_report"
-reporting_period_end: "2026-03-31"
-statement_scope: "standalone"
+document:
+  company: "Bajaj Finance Limited"
+  reporting_period: "Year ended 31 March 2026"
+  statement_scope: "standalone"
 
-source_file: "data/raw/bajaj_finance_annual_report_2026.pdf"
+source:
+  document_id: "bajaj_finance_fy2025_26_standalone"
+  manifest_file: "config/source_manifest.yaml"
+  source_file: "data/raw/AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf"
+  pdf_page_number: 391
+  pdf_page_index: 390
+  printed_page_number: 358
 
-pdf_page_number: 391
-pdf_page_index: 390
-printed_page_number: 358
+target:
+  note: "58(I)(a)"
+  note_anchors:
+    - "58"
+    - "(I)"
+  table_title: "Details of transfer through assignment in respect of loans not in default"
+  excluded_table_titles:
+    - "Details of loans (not in default) acquired through assignment"
+  years:
+    - 2026
+    - 2025
+  source_columns:
+    - "column_1"
+    - "column_2"
+  # Labels are kept exact from the PDF; canonical names align only clearly equivalent metrics.
+  canonical_metric_map:
+    "Amount of loans transferred through assignment": "loan_amount_assigned"
+    "Retention of beneficial economic interest": "retention_beneficial_economic_interest"
+    "Weighted average residual maturity": "weighted_average_residual_maturity"
+    "Weighted average holding period": "weighted_average_holding_period"
+    "Coverage of tangible security coverage": "coverage_tangible_security"
+    "Rating-wise distribution of rated loans": "rating_wise_distribution_rated_loans"
 
-note: "58(I)(a)"
-table_title: "Details of transfer through assignment in respect of loans not in default"
+expected:
+  row_count: 6
+  value_columns: 4
+  value_cell_count: 24
 
-expected_years:
-  - 2026
-  - 2025
+text_layer_repairs:
+  - font: "ITFRupee"
+    extracted: "C"
+    printed: "₹"
 
-expected_row_count: 6
-expected_value_columns: 4
-
-known_issues:
-  - "Each year contains two value columns, but the subcolumn headings are not visible. Preserve them as unidentified columns."
-
-exclude_tables:
-  - "58(I)(b) Details of loans acquired through assignment"
-  
-
-
-
-
+output_file: "outputs/bajaj_transfer_assignment.json"

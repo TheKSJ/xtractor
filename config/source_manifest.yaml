@@ -1,0 +1,35 @@
+manifest_version: 1
+description: >-
+  Source-document registry for the configured standalone annual-report
+  transfer-of-loans-through-assignment disclosures.
+
+documents:
+  bajaj_finance_fy2025_26_standalone:
+    company: "Bajaj Finance Limited"
+    reporting_period: "Year ended 31 March 2026"
+    statement_scope: "standalone"
+    source_filename: "AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf"
+    repository_path: "data/raw/AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf"
+    official_source_url: "https://www.bajajfinserv.in/finance-digital-annual-report-fy26/index.html"
+    sha256: "5535038a06d803a1ead68bb1e2e1677569c06d013046c1bcbbcf8abc7944434f"
+    retrieved_at: null
+
+  chola_finance_fy2025_26_standalone:
+    company: "Cholamandalam Investment and Finance Company Limited"
+    reporting_period: "Year ended 31 March 2026"
+    statement_scope: "standalone"
+    source_filename: "Annual_Report_FY_2025_26_6e549aa38c.pdf"
+    repository_path: "data/raw/Annual_Report_FY_2025_26_6e549aa38c.pdf"
+    official_source_url: "https://files.cholamandalam.com/cholafhl/CIFCL_AR_0fa97d6442.pdf"
+    sha256: "951ad1bbcd5db8aef03f51de5e6ddf9ad2df1b456a35cbeea5d9478bdfbc0285"
+    retrieved_at: null
+
+  ugro_capital_fy2025_26_standalone:
+    company: "UGRO Capital Limited"
+    reporting_period: "Year ended 31 March 2026"
+    statement_scope: "standalone"
+    source_filename: "1779168341-UGRO Capital Ltd_Annual Report 2025-26.pdf"
+    repository_path: "data/raw/1779168341-UGRO Capital Ltd_Annual Report 2025-26.pdf"
+    official_source_url: "https://www.ugrocapital.com/investor-relation"
+    sha256: "85931762d75974aca4bc4c4054a9c45dc29c7435a457f3c98729eaaa8fdc0223"
+    retrieved_at: null

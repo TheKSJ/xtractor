@@ -1,0 +1,63 @@
+document:
+  company: "Cholamandalam Investment and Finance Company Limited"
+  reporting_period: "Year ended 31 March 2026"
+  statement_scope: "standalone"
+
+source:
+  document_id: "chola_finance_fy2025_26_standalone"
+  manifest_file: "config/source_manifest.yaml"
+  source_file: "data/raw/Annual_Report_FY_2025_26_6e549aa38c.pdf"
+  pdf_page_number: 232
+  pdf_page_index: 231
+  printed_page_number: 232
+
+target:
+  note: "50"
+  # Note 50's heading appears on the preceding continuation page; the section title
+  # and the explicit preceding/following boundaries are verified on this page.
+  note_anchors: []
+  table_title: "III) DETAILS OF LOANS NOT IN DEFAULT TRANSFERRED THROUGH ASSIGNMENT."
+  preceding_excluded_table_titles:
+    - "(II) DISCLOSURE RELATING TO SECURITIZATION. (Contd.)"
+  excluded_table_titles:
+    - "IV) DETAILS OF STRESSED LOANS TRANSFERRED"
+  years:
+    - 2026
+    - 2025
+  source_columns:
+    - "column_1"
+    - "column_2"
+  # Chola reports one value column for each year, unlike Bajaj's two unidentified
+  # subcolumns per year.
+  source_column_layout: "one_per_year"
+  column_edge_strategy: "year_headers"
+  year_header_tolerance_y: 12.0
+  value_start_x: 300.0
+  warn_if_no_visible_subheaders: false
+  # Exact PDF row labels map only clearly equivalent concepts across lenders.
+  canonical_metric_map:
+    "Count of loans accounts assigned": "loan_account_count_assigned"
+    "Amount of loan accounts assigned (₹ in crores)": "loan_amount_assigned"
+    "Weighted average maturity (in months)": "weighted_average_maturity"
+    "Weighted average holding period (in months)": "weighted_average_holding_period"
+    "Retention of beneficial economic interest (%)": "retention_beneficial_economic_interest"
+    "Coverage of tangible security": "coverage_tangible_security"
+    "Rating wise distribution of rated loans": "rating_wise_distribution_rated_loans"
+  metric_units:
+    loan_account_count_assigned: "count"
+    loan_amount_assigned: "INR_crore"
+    weighted_average_maturity: "months"
+    weighted_average_holding_period: "months"
+    retention_beneficial_economic_interest: "percent"
+    coverage_tangible_security: null
+    rating_wise_distribution_rated_loans: null
+
+expected:
+  row_count: 7
+  value_columns: 2
+  value_cell_count: 14
+
+known_warnings:
+  - "Weighted average maturity is kept distinct from Bajaj's weighted average residual maturity; cross-lender equivalence remains unresolved."
+
+output_file: "outputs/chola_transfer_assignment.json"

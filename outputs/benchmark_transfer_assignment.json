@@ -1,0 +1,683 @@
+{
+  "benchmark": {
+    "name": "configured three-lender assignment-disclosure benchmark",
+    "scope": "Known FY2025-26 standalone annual reports only; not an unseen-report accuracy claim.",
+    "human_verified": false,
+    "matching_rule": "source_document_id + original_row_label + year + source_column_position",
+    "missing_denominator_rule": "All expected fixture records remain in every accuracy denominator; missing records count as incorrect.",
+    "normalized_number_rule": "Numeric normalized values compare numerically using Decimal(str(value)); raw_value compares exactly as text.",
+    "runtime_rule": "Runtime measures config loading and extraction only; no manual-time savings claim is made."
+  },
+  "cases": [
+    {
+      "name": "bajaj",
+      "status": "passed",
+      "config_file": "config\\bajaj_transfer_assignment.yaml",
+      "fixture_file": "tests\\fixtures\\bajaj_transfer_assignment_reference.json",
+      "fixture_provenance_file": "tests\\fixtures\\bajaj_transfer_assignment_provenance.json",
+      "source_document_id": "bajaj_finance_fy2025_26_standalone",
+      "source_audit": {
+        "method": "direct PDF text, word-coordinate and page-reference audit; extractor output is not used",
+        "human_verified": false,
+        "checks": {
+          "file_exists": true,
+          "page_number_index_agree": true,
+          "page_index_in_range": true,
+          "target_title_present": true,
+          "target_title_unique": true,
+          "preceding_boundary_present": true,
+          "preceding_boundary_before_target": true,
+          "excluded_boundary_present": true,
+          "printed_page_number_present": true,
+          "year_2026_present": true,
+          "year_2025_present": true
+        },
+        "row_label_checks": {
+          "Amount of loans transferred through assignment": true,
+          "Coverage of tangible security coverage": true,
+          "Rating-wise distribution of rated loans": true,
+          "Retention of beneficial economic interest": true,
+          "Weighted average holding period": true,
+          "Weighted average residual maturity": true
+        },
+        "value_presence_checks_passed": 24,
+        "value_presence_checks_total": 24,
+        "unit_checks_passed": 24,
+        "unit_checks_total": 24,
+        "column_boundary_checks_passed": 24,
+        "column_boundary_checks_total": 24,
+        "column_boundaries": [
+          {
+            "left": 264.233,
+            "right": 326.162
+          },
+          {
+            "left": 326.162,
+            "right": 397.19
+          },
+          {
+            "left": 397.19,
+            "right": 468.218
+          },
+          {
+            "left": 468.218,
+            "right": 539.246
+          }
+        ],
+        "row_value_alignment_checks_passed": 24,
+        "row_value_alignment_checks_total": 24,
+        "assignment_basis": {
+          "years": [
+            2026,
+            2025
+          ],
+          "source_column_layout": "columns_per_year",
+          "source_columns": [
+            "column_1",
+            "column_2"
+          ],
+          "note": "Values are independently matched to source row bands and configured year/column bands using PDF word coordinates; visual review remains required for final human sign-off."
+        },
+        "passed": true
+      },
+      "fixture_provenance_check": {
+        "company": {
+          "expected": "Bajaj Finance Limited",
+          "fixture": "Bajaj Finance Limited",
+          "checked": true
+        },
+        "reporting_period": {
+          "expected": "Year ended 31 March 2026",
+          "fixture": "Year ended 31 March 2026",
+          "checked": true
+        },
+        "statement_scope": {
+          "expected": "standalone",
+          "fixture": "standalone",
+          "checked": true
+        },
+        "source_document_id": {
+          "expected": "bajaj_finance_fy2025_26_standalone",
+          "fixture": "bajaj_finance_fy2025_26_standalone",
+          "checked": true
+        },
+        "source_manifest_file": {
+          "expected": "config/source_manifest.yaml",
+          "fixture": "config/source_manifest.yaml",
+          "checked": true
+        },
+        "source_filename": {
+          "expected": "AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf",
+          "fixture": "AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf",
+          "checked": true
+        },
+        "source_file": {
+          "expected": "data/raw/AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf",
+          "fixture": "data/raw/AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf",
+          "checked": true
+        },
+        "pdf_page_number": {
+          "expected": 391,
+          "fixture": 391,
+          "checked": true
+        },
+        "pdf_page_index": {
+          "expected": 390,
+          "fixture": 390,
+          "checked": true
+        },
+        "printed_page_number": {
+          "expected": 358,
+          "fixture": 358,
+          "checked": true
+        },
+        "note": {
+          "expected": "58(I)(a)",
+          "fixture": "58(I)(a)",
+          "checked": true
+        },
+        "table_title": {
+          "expected": "Details of transfer through assignment in respect of loans not in default",
+          "fixture": "Details of transfer through assignment in respect of loans not in default",
+          "checked": true
+        }
+      },
+      "comparison": {
+        "expected_record_count": 24,
+        "extracted_record_count": 24,
+        "correct_record_count": 24,
+        "missing_records": [],
+        "unexpected_records": [],
+        "duplicate_records": [],
+        "incorrect_records": [],
+        "field_match_counts": {
+          "original_row_label": 24,
+          "canonical_metric": 24,
+          "year": 24,
+          "source_column_position": 24,
+          "raw_value": 24,
+          "normalized_value": 24,
+          "unit": 24,
+          "company": 24,
+          "reporting_period": 24,
+          "statement_scope": 24,
+          "source_document_id": 24,
+          "source_manifest_file": 24,
+          "source_filename": 24,
+          "source_file": 24,
+          "pdf_page_number": 24,
+          "pdf_page_index": 24,
+          "printed_page_number": 24,
+          "note": 24,
+          "table_title": 24
+        },
+        "accuracy_denominator": 24,
+        "accuracy": {
+          "complete_record": {
+            "correct": 24,
+            "denominator": 24,
+            "ratio": 1.0
+          },
+          "raw_value": {
+            "correct": 24,
+            "denominator": 24,
+            "ratio": 1.0
+          },
+          "normalized_value_numeric_or_null": {
+            "correct": 24,
+            "denominator": 24,
+            "ratio": 1.0
+          },
+          "unit": {
+            "correct": 24,
+            "denominator": 24,
+            "ratio": 1.0
+          },
+          "canonical_metric": {
+            "correct": 24,
+            "denominator": 24,
+            "ratio": 1.0
+          },
+          "provenance": {
+            "correct": 288,
+            "correct_fields": 288,
+            "denominator": 288,
+            "ratio": 1.0
+          }
+        }
+      },
+      "warnings": [
+        "Subcolumn headings are not visible; positions are preserved only as column_1 and column_2 under each year, and their meaning is not inferred.",
+        "The PDF text layer encodes the printed rupee sign as C in the ITFRupee font; raw values restore that font-specific glyph to ₹."
+      ],
+      "errors": [],
+      "error": null,
+      "extraction_runtime_seconds": 0.05361030000130995,
+      "total_case_runtime_seconds": 0.09602199999972072
+    },
+    {
+      "name": "chola",
+      "status": "passed",
+      "config_file": "config\\chola_transfer_assignment.yaml",
+      "fixture_file": "tests\\fixtures\\chola_transfer_assignment_reference.json",
+      "fixture_provenance_file": null,
+      "source_document_id": "chola_finance_fy2025_26_standalone",
+      "source_audit": {
+        "method": "direct PDF text, word-coordinate and page-reference audit; extractor output is not used",
+        "human_verified": false,
+        "checks": {
+          "file_exists": true,
+          "page_number_index_agree": true,
+          "page_index_in_range": true,
+          "target_title_present": true,
+          "target_title_unique": true,
+          "preceding_boundary_present": true,
+          "preceding_boundary_before_target": true,
+          "excluded_boundary_present": true,
+          "printed_page_number_present": true,
+          "year_2026_present": true,
+          "year_2025_present": true
+        },
+        "row_label_checks": {
+          "Amount of loan accounts assigned (₹ in crores)": true,
+          "Count of loans accounts assigned": true,
+          "Coverage of tangible security": true,
+          "Rating wise distribution of rated loans": true,
+          "Retention of beneficial economic interest (%)": true,
+          "Weighted average holding period (in months)": true,
+          "Weighted average maturity (in months)": true
+        },
+        "value_presence_checks_passed": 14,
+        "value_presence_checks_total": 14,
+        "unit_checks_passed": 14,
+        "unit_checks_total": 14,
+        "column_boundary_checks_passed": 14,
+        "column_boundary_checks_total": 14,
+        "column_boundaries": [
+          {
+            "left": 300.0,
+            "right": 483.636
+          },
+          {
+            "left": 483.636,
+            "right": 551.636
+          }
+        ],
+        "row_value_alignment_checks_passed": 14,
+        "row_value_alignment_checks_total": 14,
+        "assignment_basis": {
+          "years": [
+            2026,
+            2025
+          ],
+          "source_column_layout": "one_per_year",
+          "source_columns": [
+            "column_1",
+            "column_2"
+          ],
+          "note": "Values are independently matched to source row bands and configured year/column bands using PDF word coordinates; visual review remains required for final human sign-off."
+        },
+        "passed": true
+      },
+      "fixture_provenance_check": {
+        "company": {
+          "expected": "Cholamandalam Investment and Finance Company Limited",
+          "fixture": "Cholamandalam Investment and Finance Company Limited",
+          "checked": true
+        },
+        "reporting_period": {
+          "expected": "Year ended 31 March 2026",
+          "fixture": "Year ended 31 March 2026",
+          "checked": true
+        },
+        "statement_scope": {
+          "expected": "standalone",
+          "fixture": "standalone",
+          "checked": true
+        },
+        "source_document_id": {
+          "expected": "chola_finance_fy2025_26_standalone",
+          "fixture": "chola_finance_fy2025_26_standalone",
+          "checked": true
+        },
+        "source_manifest_file": {
+          "expected": "config/source_manifest.yaml",
+          "fixture": "config/source_manifest.yaml",
+          "checked": true
+        },
+        "source_filename": {
+          "expected": "Annual_Report_FY_2025_26_6e549aa38c.pdf",
+          "fixture": "Annual_Report_FY_2025_26_6e549aa38c.pdf",
+          "checked": true
+        },
+        "source_file": {
+          "expected": "data/raw/Annual_Report_FY_2025_26_6e549aa38c.pdf",
+          "fixture": "data/raw/Annual_Report_FY_2025_26_6e549aa38c.pdf",
+          "checked": true
+        },
+        "pdf_page_number": {
+          "expected": 232,
+          "fixture": 232,
+          "checked": true
+        },
+        "pdf_page_index": {
+          "expected": 231,
+          "fixture": 231,
+          "checked": true
+        },
+        "printed_page_number": {
+          "expected": 232,
+          "fixture": 232,
+          "checked": true
+        },
+        "note": {
+          "expected": "50",
+          "fixture": "50",
+          "checked": true
+        },
+        "table_title": {
+          "expected": "III) DETAILS OF LOANS NOT IN DEFAULT TRANSFERRED THROUGH ASSIGNMENT.",
+          "fixture": "III) DETAILS OF LOANS NOT IN DEFAULT TRANSFERRED THROUGH ASSIGNMENT.",
+          "checked": true
+        }
+      },
+      "comparison": {
+        "expected_record_count": 14,
+        "extracted_record_count": 14,
+        "correct_record_count": 14,
+        "missing_records": [],
+        "unexpected_records": [],
+        "duplicate_records": [],
+        "incorrect_records": [],
+        "field_match_counts": {
+          "original_row_label": 14,
+          "canonical_metric": 14,
+          "year": 14,
+          "source_column_position": 14,
+          "raw_value": 14,
+          "normalized_value": 14,
+          "unit": 14,
+          "company": 14,
+          "reporting_period": 14,
+          "statement_scope": 14,
+          "source_document_id": 14,
+          "source_manifest_file": 14,
+          "source_filename": 14,
+          "source_file": 14,
+          "pdf_page_number": 14,
+          "pdf_page_index": 14,
+          "printed_page_number": 14,
+          "note": 14,
+          "table_title": 14
+        },
+        "accuracy_denominator": 14,
+        "accuracy": {
+          "complete_record": {
+            "correct": 14,
+            "denominator": 14,
+            "ratio": 1.0
+          },
+          "raw_value": {
+            "correct": 14,
+            "denominator": 14,
+            "ratio": 1.0
+          },
+          "normalized_value_numeric_or_null": {
+            "correct": 14,
+            "denominator": 14,
+            "ratio": 1.0
+          },
+          "unit": {
+            "correct": 14,
+            "denominator": 14,
+            "ratio": 1.0
+          },
+          "canonical_metric": {
+            "correct": 14,
+            "denominator": 14,
+            "ratio": 1.0
+          },
+          "provenance": {
+            "correct": 168,
+            "correct_fields": 168,
+            "denominator": 168,
+            "ratio": 1.0
+          }
+        }
+      },
+      "warnings": [
+        "Weighted average maturity is kept distinct from Bajaj's weighted average residual maturity; cross-lender equivalence remains unresolved."
+      ],
+      "errors": [],
+      "error": null,
+      "extraction_runtime_seconds": 0.030975900001067203,
+      "total_case_runtime_seconds": 0.06641540000055102
+    },
+    {
+      "name": "ugro",
+      "status": "passed",
+      "config_file": "config\\ugro_transfer_assignment.yaml",
+      "fixture_file": "tests\\fixtures\\ugro_transfer_assignment_reference.json",
+      "fixture_provenance_file": null,
+      "source_document_id": "ugro_capital_fy2025_26_standalone",
+      "source_audit": {
+        "method": "direct PDF text, word-coordinate and page-reference audit; extractor output is not used",
+        "human_verified": false,
+        "checks": {
+          "file_exists": true,
+          "page_number_index_agree": true,
+          "page_index_in_range": true,
+          "target_title_present": true,
+          "target_title_unique": true,
+          "preceding_boundary_present": true,
+          "preceding_boundary_before_target": true,
+          "excluded_boundary_present": true,
+          "printed_page_number_present": true,
+          "year_2026_present": true,
+          "year_2025_present": true
+        },
+        "row_label_checks": {
+          "Aggregate consideration received (Rs. in lakh)": true,
+          "Aggregate principal outstanding of loans transferred through assignment (Rs. in lakh)": true,
+          "Coverage of tangible security (in % ) **": true,
+          "Rating- wise distribution of rated loans": true,
+          "Retention of Beneficial economic interest (in %)": true,
+          "Weighted average Holding period of Loans (in years)": true,
+          "Weighted average Maturity of Loans (in years)": true
+        },
+        "value_presence_checks_passed": 14,
+        "value_presence_checks_total": 14,
+        "unit_checks_passed": 14,
+        "unit_checks_total": 14,
+        "column_boundary_checks_passed": 14,
+        "column_boundary_checks_total": 14,
+        "column_boundaries": [
+          {
+            "left": 350.0,
+            "right": 475.454
+          },
+          {
+            "left": 475.454,
+            "right": 540.0
+          }
+        ],
+        "row_value_alignment_checks_passed": 14,
+        "row_value_alignment_checks_total": 14,
+        "assignment_basis": {
+          "years": [
+            2026,
+            2025
+          ],
+          "source_column_layout": "one_per_year",
+          "source_columns": [
+            "column_1",
+            "column_2"
+          ],
+          "note": "Values are independently matched to source row bands and configured year/column bands using PDF word coordinates; visual review remains required for final human sign-off."
+        },
+        "passed": true
+      },
+      "fixture_provenance_check": {
+        "company": {
+          "expected": "UGRO Capital Limited",
+          "fixture": "UGRO Capital Limited",
+          "checked": true
+        },
+        "reporting_period": {
+          "expected": "Year ended 31 March 2026",
+          "fixture": "Year ended 31 March 2026",
+          "checked": true
+        },
+        "statement_scope": {
+          "expected": "standalone",
+          "fixture": "standalone",
+          "checked": true
+        },
+        "source_document_id": {
+          "expected": "ugro_capital_fy2025_26_standalone",
+          "fixture": "ugro_capital_fy2025_26_standalone",
+          "checked": true
+        },
+        "source_manifest_file": {
+          "expected": "config/source_manifest.yaml",
+          "fixture": "config/source_manifest.yaml",
+          "checked": true
+        },
+        "source_filename": {
+          "expected": "1779168341-UGRO Capital Ltd_Annual Report 2025-26.pdf",
+          "fixture": "1779168341-UGRO Capital Ltd_Annual Report 2025-26.pdf",
+          "checked": true
+        },
+        "source_file": {
+          "expected": "data/raw/1779168341-UGRO Capital Ltd_Annual Report 2025-26.pdf",
+          "fixture": "data/raw/1779168341-UGRO Capital Ltd_Annual Report 2025-26.pdf",
+          "checked": true
+        },
+        "pdf_page_number": {
+          "expected": 378,
+          "fixture": 378,
+          "checked": true
+        },
+        "pdf_page_index": {
+          "expected": 377,
+          "fixture": 377,
+          "checked": true
+        },
+        "printed_page_number": {
+          "expected": 378,
+          "fixture": 378,
+          "checked": true
+        },
+        "note": {
+          "expected": "64(a)(i)",
+          "fixture": "64(a)(i)",
+          "checked": true
+        },
+        "table_title": {
+          "expected": "a. i) Details of transfer through Assignment in respect of loans not in default *:",
+          "fixture": "a. i) Details of transfer through Assignment in respect of loans not in default *:",
+          "checked": true
+        }
+      },
+      "comparison": {
+        "expected_record_count": 14,
+        "extracted_record_count": 14,
+        "correct_record_count": 14,
+        "missing_records": [],
+        "unexpected_records": [],
+        "duplicate_records": [],
+        "incorrect_records": [],
+        "field_match_counts": {
+          "original_row_label": 14,
+          "canonical_metric": 14,
+          "year": 14,
+          "source_column_position": 14,
+          "raw_value": 14,
+          "normalized_value": 14,
+          "unit": 14,
+          "company": 14,
+          "reporting_period": 14,
+          "statement_scope": 14,
+          "source_document_id": 14,
+          "source_manifest_file": 14,
+          "source_filename": 14,
+          "source_file": 14,
+          "pdf_page_number": 14,
+          "pdf_page_index": 14,
+          "printed_page_number": 14,
+          "note": 14,
+          "table_title": 14
+        },
+        "accuracy_denominator": 14,
+        "accuracy": {
+          "complete_record": {
+            "correct": 14,
+            "denominator": 14,
+            "ratio": 1.0
+          },
+          "raw_value": {
+            "correct": 14,
+            "denominator": 14,
+            "ratio": 1.0
+          },
+          "normalized_value_numeric_or_null": {
+            "correct": 14,
+            "denominator": 14,
+            "ratio": 1.0
+          },
+          "unit": {
+            "correct": 14,
+            "denominator": 14,
+            "ratio": 1.0
+          },
+          "canonical_metric": {
+            "correct": 14,
+            "denominator": 14,
+            "ratio": 1.0
+          },
+          "provenance": {
+            "correct": 168,
+            "correct_fields": 168,
+            "denominator": 168,
+            "ratio": 1.0
+          }
+        }
+      },
+      "warnings": [
+        "Ugro's principal-outstanding amount is kept distinct from Bajaj/Chola loan amount assigned; definitions require review before aggregation.",
+        "Ugro reports maturity and holding period in years; convert explicitly before comparison with month-denominated values. Ugro maturity is not Bajaj's residual maturity.",
+        "Coverage is computed using only secured loans according to the source footnote; cross-lender comparability is limited.",
+        "Non-Rated is preserved as source text and is not equated with Chola NA or Bajaj Unrated.",
+        "The source footnote says this table excludes loans transferred through co-lending arrangements."
+      ],
+      "errors": [],
+      "error": null,
+      "extraction_runtime_seconds": 0.11574149999978545,
+      "total_case_runtime_seconds": 0.2165086999993946
+    }
+  ],
+  "overall": {
+    "status": "passed",
+    "expected_record_count": 52,
+    "extracted_record_count": 52,
+    "correct_record_count": 52,
+    "field_match_counts": {
+      "original_row_label": 52,
+      "canonical_metric": 52,
+      "year": 52,
+      "source_column_position": 52,
+      "raw_value": 52,
+      "normalized_value": 52,
+      "unit": 52,
+      "company": 52,
+      "reporting_period": 52,
+      "statement_scope": 52,
+      "source_document_id": 52,
+      "source_manifest_file": 52,
+      "source_filename": 52,
+      "source_file": 52,
+      "pdf_page_number": 52,
+      "pdf_page_index": 52,
+      "printed_page_number": 52,
+      "note": 52,
+      "table_title": 52
+    },
+    "accuracy": {
+      "complete_record": {
+        "correct": 52,
+        "denominator": 52,
+        "ratio": 1.0
+      },
+      "raw_value": {
+        "correct": 52,
+        "denominator": 52,
+        "ratio": 1.0
+      },
+      "normalized_value_numeric_or_null": {
+        "correct": 52,
+        "denominator": 52,
+        "ratio": 1.0
+      },
+      "unit": {
+        "correct": 52,
+        "denominator": 52,
+        "ratio": 1.0
+      },
+      "canonical_metric": {
+        "correct": 52,
+        "denominator": 52,
+        "ratio": 1.0
+      },
+      "provenance": {
+        "correct": 624,
+        "denominator": 624,
+        "ratio": 1.0
+      }
+    },
+    "missing_record_count": 0,
+    "unexpected_record_count": 0,
+    "duplicate_record_count": 0,
+    "runtime_seconds": 0.2003277000021626,
+    "benchmark_wall_time_seconds": 0.3790227000008599
+  }
+}
