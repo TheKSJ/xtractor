@@ -22,6 +22,7 @@ BAJAJ_CONFIG = ROOT / "config" / "bajaj_transfer_assignment.yaml"
 BAJAJ_REFERENCE = ROOT / "tests" / "fixtures" / "bajaj_transfer_assignment_reference.json"
 
 
+@unittest.skipUnless((ROOT / "data" / "raw" / "Annual_Report_FY_2025_26_6e549aa38c.pdf").is_file(), "real annual-report PDFs not present")
 class CholaExtractionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -140,6 +141,7 @@ class CholaExtractionTests(unittest.TestCase):
             extract_document(broken)
 
 
+@unittest.skipUnless((ROOT / "data" / "raw" / "AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf").is_file(), "real annual-report PDFs not present")
 class BajajRegressionTests(unittest.TestCase):
     def test_original_bajaj_fields_and_values_are_unchanged(self) -> None:
         config = load_config(BAJAJ_CONFIG)

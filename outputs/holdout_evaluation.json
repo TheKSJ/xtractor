@@ -1,0 +1,24 @@
+{
+  "source": {
+    "document_id": "mahindra_finance_fy2024_25_standalone_holdout",
+    "official_source_url": "https://www.mahindrafinance.com/bn/wp-content/uploads/2025/06/Mahindra-Finance-IR25_Web-upload-PDF-Without-Notice.pdf",
+    "sha256": "51105ee12d4aaf94d241be2244c12edf221a57eef53798998eb200f9c49dbf50",
+    "retrieved_at": "2026-09-01",
+    "reporting_period": "Year ended 31 March 2025",
+    "statement_scope": "standalone"
+  },
+  "initial_extraction": {
+    "status": "failed",
+    "logic": "legacy_single_region_transfer_extractor",
+    "error": "Initial generic attempt rejected the two-page spread because it contains two Particulars headers and two visual table regions."
+  },
+  "configuration_added": "config\\mahindra_holdout_transfer_assignment.yaml",
+  "final_extraction": {
+    "status": "passed",
+    "expected_records": 24,
+    "extracted_records": 24,
+    "warnings": [
+      "Holdout table is split across two visual pages in one PDF page; both regions are preserved."
+    ]
+  }
+}

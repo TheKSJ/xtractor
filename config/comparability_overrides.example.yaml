@@ -1,0 +1,4 @@
+version: 1
+overrides:
+  - comparison_id: "replace-with-a-decision-id"
+    rationale: "Document the analyst's scope review and why this specific calculation is acceptable."

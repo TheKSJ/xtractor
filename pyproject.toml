@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "indian-lender-intel"
+version = "0.2.0"
+description = "Validated, comparison-aware extraction of Indian lender annual-report disclosures"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+license = {file = "LICENSE"}
+authors = [{name = "TheKSJ"}]
+dependencies = [
+  "PyMuPDF>=1.28,<1.29",
+  "PyYAML>=6,<7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[project.scripts]
+lender-intel = "lender_intel.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+py-modules = ["extract_transfer_assignment", "extract_bajaj_transfer_assignment", "benchmark_transfer_assignment", "benchmark_ecl"]
+
+[tool.setuptools.packages.find]
+include = ["lender_intel*"]

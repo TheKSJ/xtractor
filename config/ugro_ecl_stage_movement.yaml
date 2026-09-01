@@ -1,0 +1,48 @@
+disclosure_family: ecl_stage_movement
+document:
+  company: "UGRO Capital Limited"
+  reporting_period: "Year ended 31 March 2026"
+  statement_scope: standalone
+source:
+  document_id: ugro_capital_fy2025_26_standalone
+  manifest_file: config/source_manifest.yaml
+  source_file: data/raw/1779168341-UGRO Capital Ltd_Annual Report 2025-26.pdf
+tables:
+  - note: "50"
+    table_title: "Movement of expected credit loss on advances"
+    title_anchor: "Movement of expected credit loss on advances"
+    pdf_page_number: 340
+    pdf_page_index: 339
+    printed_page_number: 340
+    unit: INR_lakh
+    population_scope: advances
+    source_footnotes:
+      - "The table is the movement of expected credit loss on advances; loan commitments are disclosed separately."
+    required_anchors: ["Stage 1", "Stage 2", "Stage 3", "Purchased", "Total"]
+    stage_columns:
+      - {original_stage_label: "Stage 1", canonical_stage: "Stage 1", source_column_position: stage_1, x0: 280, x1: 322}
+      - {original_stage_label: "Stage 2", canonical_stage: "Stage 2", source_column_position: stage_2, x0: 332, x1: 375}
+      - {original_stage_label: "Stage 3", canonical_stage: "Stage 3", source_column_position: stage_3, x0: 385, x1: 425}
+      - {original_stage_label: "Purchased or originated credit impaired", canonical_stage: unresolved, source_column_position: purchased_or_originated_credit_impaired, x0: 465, x1: 488}
+      - {original_stage_label: "Total", canonical_stage: unresolved, source_column_position: total, x0: 495, x1: 545}
+    rows:
+      - {year: 2026, y: 436.2, original_row_label: "Opening balances as at April 01, 2025", canonical_movement_category: opening_balance, row_role: opening, label_fragments: ["Opening balances as at April 01, 2025"]}
+      - {year: 2026, y: 458.2, original_row_label: "Transfer to Stage 1", canonical_movement_category: transfer_to_stage_1, label_fragments: ["Transfer to Stage 1"]}
+      - {year: 2026, y: 469.1, original_row_label: "Transfer to Stage 2", canonical_movement_category: transfer_to_stage_2, label_fragments: ["Transfer to Stage 2"]}
+      - {year: 2026, y: 480.0, original_row_label: "Transfer to Stage 3", canonical_movement_category: transfer_to_stage_3, label_fragments: ["Transfer to Stage 3"]}
+      - {year: 2026, y: 490.9, original_row_label: "New loans originated during the year", canonical_movement_category: new_assets_originated_or_purchased, label_fragments: ["New loans originated"]}
+      - {year: 2026, y: 501.9, original_row_label: "Other movements (on account of changes in EAD)", canonical_movement_category: foreign_exchange_or_other_adjustments, mapping_confidence: medium, mapping_explanation: "The source specifically attributes this row to changes in EAD; no foreign-exchange effect is inferred.", label_fragments: ["Other movements", "changes in EAD"]}
+      - {year: 2026, y: 512.8, original_row_label: "Amounts written off during the year", canonical_movement_category: write_offs, label_fragments: ["Amounts written off"]}
+      - {year: 2026, y: 523.6, original_row_label: "Closing balance as at March 31, 2026", canonical_movement_category: closing_balance, row_role: closing, label_fragments: ["Closing balance as at March 31, 2026"]}
+      - {year: 2025, y: 546.2, original_row_label: "Opening balance as at April 01, 2024", canonical_movement_category: opening_balance, row_role: opening, label_fragments: ["Opening balance as at April 01, 2024"]}
+      - {year: 2025, y: 568.2, original_row_label: "Transfer to Stage 1", canonical_movement_category: transfer_to_stage_1, label_fragments: ["Transfer to Stage 1"]}
+      - {year: 2025, y: 579.1, original_row_label: "Transfer to Stage 2", canonical_movement_category: transfer_to_stage_2, label_fragments: ["Transfer to Stage 2"]}
+      - {year: 2025, y: 590.6, original_row_label: "Transfer to Stage 3", canonical_movement_category: transfer_to_stage_3, label_fragments: ["Transfer to Stage 3"]}
+      - {year: 2025, y: 601.5, original_row_label: "New loans originated during the year", canonical_movement_category: new_assets_originated_or_purchased, label_fragments: ["New loans originated"]}
+      - {year: 2025, y: 612.4, original_row_label: "Other movements (on account of changes in EAD)", canonical_movement_category: foreign_exchange_or_other_adjustments, mapping_confidence: medium, mapping_explanation: "The source specifically attributes this row to changes in EAD; no foreign-exchange effect is inferred.", label_fragments: ["Other movements", "changes in EAD"]}
+      - {year: 2025, y: 623.4, original_row_label: "Amounts written off during the year", canonical_movement_category: write_offs, label_fragments: ["Amounts written off"]}
+      - {year: 2025, y: 634.2, original_row_label: "Closing balance as at March 31, 2025", canonical_movement_category: closing_balance, row_role: closing, label_fragments: ["Closing balance as at March 31, 2025"]}
+known_warnings:
+  - "Purchased or originated credit-impaired is preserved as an unresolved stage and is not merged into Stage 1, Stage 2 or Stage 3."
+  - "The advances table is kept separate from the following loan-commitments and gross-carrying-amount tables."
+output_file: outputs/ugro_ecl_stage_movement.json

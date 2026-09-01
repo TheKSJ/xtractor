@@ -33,3 +33,13 @@ documents:
     official_source_url: "https://www.ugrocapital.com/investor-relation"
     sha256: "85931762d75974aca4bc4c4054a9c45dc29c7435a457f3c98729eaaa8fdc0223"
     retrieved_at: null
+
+  mahindra_finance_fy2024_25_standalone_holdout:
+    company: "Mahindra & Mahindra Financial Services Limited"
+    reporting_period: "Year ended 31 March 2025"
+    statement_scope: "standalone"
+    source_filename: "Mahindra-Finance-IR25_Web-upload-PDF-Without-Notice.pdf"
+    repository_path: "data/raw/Mahindra-Finance-IR25_Web-upload-PDF-Without-Notice.pdf"
+    official_source_url: "https://www.mahindrafinance.com/bn/wp-content/uploads/2025/06/Mahindra-Finance-IR25_Web-upload-PDF-Without-Notice.pdf"
+    sha256: "51105ee12d4aaf94d241be2244c12edf221a57eef53798998eb200f9c49dbf50"
+    retrieved_at: "2026-09-01"

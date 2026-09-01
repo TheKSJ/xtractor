@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BAJAJ_CONFIG = ROOT / "config" / "bajaj_transfer_assignment.yaml"
 
 
+@unittest.skipUnless((ROOT / "data" / "raw" / "AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf").is_file(), "real annual-report PDFs not present")
 class ProvenanceAndNegativeInputTests(unittest.TestCase):
     def test_value_column_requires_both_left_and_right_boundaries(self) -> None:
         self.assertTrue(

@@ -1,0 +1,15 @@
+manifest_version: 1
+description: >-
+  Registry of annual-report sources used by lender-intel. Replace the example
+  values with a verified official URL, local repository path and SHA-256 hash.
+
+documents:
+  example_lender_fy2026_standalone:
+    company: "Example Lender Limited"
+    reporting_period: "Year ended 31 March 2026"
+    statement_scope: "standalone"
+    source_filename: "example-annual-report-fy2026.pdf"
+    repository_path: "data/raw/example-annual-report-fy2026.pdf"
+    official_source_url: "https://example.com/annual-report-fy2026.pdf"
+    sha256: "replace-with-64-character-lowercase-sha256"
+    retrieved_at: "YYYY-MM-DD"

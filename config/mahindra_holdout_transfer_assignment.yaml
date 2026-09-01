@@ -1,0 +1,40 @@
+disclosure_family: transfer_assignment
+document:
+  company: "Mahindra & Mahindra Financial Services Limited"
+  reporting_period: "Year ended 31 March 2025"
+  statement_scope: standalone
+source:
+  document_id: mahindra_finance_fy2024_25_standalone_holdout
+  manifest_file: config/source_manifest.yaml
+  source_file: data/raw/Mahindra-Finance-IR25_Web-upload-PDF-Without-Notice.pdf
+  pdf_page_number: 196
+  pdf_page_index: 195
+target:
+  note: "V(a)"
+  table_title: "During the current year, details of assignment transactions undertaken by the Company"
+  printed_page_number: 388
+  regions:
+    - printed_page_number: 388
+      x0: 90
+      x1: 550
+      value_bounds: [[400, 465], [525, 565]]
+      rows:
+        - {number: 1, y: 712.8, original_row_label: "No. of accounts", canonical_metric: loan_account_count_assigned, unit: count}
+        - {number: 2, y: 726.4, original_row_label: "Aggregate value (net of provision) of account sold", canonical_metric: loan_amount_assigned, unit: INR_crore}
+        - {number: 3, y: 740.0, original_row_label: "Aggregate consideration (to the extent of 80% of assets assigned)", canonical_metric: aggregate_consideration_received, unit: INR_crore}
+        - {number: 4, y: 763.2, original_row_label: "No. of transactions", canonical_metric: transaction_count_assigned, unit: count}
+    - printed_page_number: 389
+      x0: 700
+      x1: 1170
+      value_bounds: [[1015, 1075], [1125, 1165]]
+      rows:
+        - {number: 5, y: 166.1, original_row_label: "Weighted average maturity (residual maturity) (in months)", canonical_metric: weighted_average_residual_maturity, unit: months}
+        - {number: 6, y: 179.6, original_row_label: "Weighted average holding period (in months)", canonical_metric: weighted_average_holding_period, unit: months}
+        - {number: 7, y: 193.2, original_row_label: "Retention of beneficial economic interest (MRR of the assignor)", canonical_metric: retention_beneficial_economic_interest, unit: percent}
+        - {number: 8, y: 216.4, original_row_label: "Coverage of tangible security coverage", canonical_metric: coverage_tangible_security, unit: percent}
+        - {number: 9, y: 229.9, original_row_label: "Rating-wise distribution of weighted loans", canonical_metric: rating_wise_distribution_rated_loans, unit: text}
+        - {number: 10, y: 243.5, original_row_label: "Number of instances (transactions) where transferor has agreed to replace the transferred loans", canonical_metric: transfer_replacement_instances, unit: count}
+        - {number: 11, y: 266.7, original_row_label: "Number of transferred loans replaced", canonical_metric: transfer_replaced_loan_count, unit: count}
+        - {number: 12, y: 280.2, original_row_label: "Net gain on derecognition of financial instruments under amortised cost category", canonical_metric: net_gain_derecognition, unit: INR_crore}
+  years: [2025, 2024]
+output_file: outputs/mahindra_holdout_transfer_assignment.json

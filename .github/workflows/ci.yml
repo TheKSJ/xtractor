@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install package and test dependencies
+        run: python -m pip install -e .
+      - name: Run test suite
+        run: python -m unittest discover -s tests -v
+      - name: Build deterministic demo
+        run: lender-intel demo --output demo-output
+      - name: Analyze deterministic demo
+        run: lender-intel analyze --input demo-output --output analyst-output

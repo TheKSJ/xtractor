@@ -1,0 +1,23 @@
+suite: ecl_stage_movement_spot_checks
+checks:
+  - config: config/bajaj_ecl_stage_movement.yaml
+    source_document_id: bajaj_finance_fy2025_26_standalone
+    year: 2026
+    canonical_stage: Stage 3
+    canonical_movement_category: closing_balance
+    source_column_position: impairment_allowance_stage_3
+    normalized_value: 2859.31
+  - config: config/chola_ecl_stage_movement.yaml
+    source_document_id: chola_finance_fy2025_26_standalone
+    year: 2026
+    canonical_stage: Stage 1
+    canonical_movement_category: opening_balance
+    source_column_position: impairment_allowance_stage_1
+    normalized_value: 631.46
+  - config: config/ugro_ecl_stage_movement.yaml
+    source_document_id: ugro_capital_fy2025_26_standalone
+    year: 2026
+    canonical_stage: Stage 3
+    canonical_movement_category: closing_balance
+    source_column_position: stage_3
+    normalized_value: 12333.69

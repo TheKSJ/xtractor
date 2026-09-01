@@ -1,0 +1,65 @@
+disclosure_family: ecl_stage_movement
+document:
+  company: "Bajaj Finance Limited"
+  reporting_period: "Year ended 31 March 2026"
+  statement_scope: standalone
+source:
+  document_id: bajaj_finance_fy2025_26_standalone
+  manifest_file: config/source_manifest.yaml
+  source_file: data/raw/AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf
+tables:
+  - note: "9"
+    table_title: "Analysis of changes in the gross carrying amount and corresponding ECL allowances in relation to loans is as follows"
+    title_anchor: "Analysis of changes in the gross carrying amount"
+    pdf_page_number: 295
+    pdf_page_index: 294
+    printed_page_number: 262
+    unit: INR_crore
+    population_scope: loans
+    source_footnotes:
+      - "Details of the methodology used for ECL are covered in the credit risk section of note 49."
+    required_anchors: ["Stage 1", "Impairment", "allowance"]
+    stage_columns:
+      - {original_stage_label: "Stage 1", canonical_stage: "Stage 1", source_column_position: impairment_allowance_stage_1, x0: 200, x1: 250}
+      - {original_stage_label: "Stage 2", canonical_stage: "Stage 2", source_column_position: impairment_allowance_stage_2, x0: 305, x1: 345}
+      - {original_stage_label: "Stage 3", canonical_stage: "Stage 3", source_column_position: impairment_allowance_stage_3, x0: 400, x1: 445}
+      - {original_stage_label: "Total", canonical_stage: unresolved, source_column_position: impairment_allowance_total, x0: 500, x1: 550}
+    rows:
+      - {year: 2026, y: 448.9, original_row_label: "As at 31 March 2025", canonical_movement_category: opening_balance, row_role: opening, label_fragments: ["As at 31 March 2025"]}
+      - {year: 2026, y: 478.9, original_row_label: "transfers to stage 1", canonical_movement_category: transfer_to_stage_1, label_fragments: ["transfers to stage 1"]}
+      - {year: 2026, y: 493.9, original_row_label: "transfers to stage 2", canonical_movement_category: transfer_to_stage_2, label_fragments: ["transfers to stage 2"]}
+      - {year: 2026, y: 508.2, original_row_label: "transfers to stage 3", canonical_movement_category: transfer_to_stage_3, label_fragments: ["transfers to stage 3"]}
+      - {year: 2026, y: 522.5, original_row_label: "[unlabeled transfer subtotal]", canonical_movement_category: transfer_subtotal, row_role: subtotal, mapping_confidence: low, mapping_explanation: "The source prints a numeric subtotal after the three transfer rows without a visible row label; it is preserved but excluded from additive reconciliation.", label_fragments: ["Transfers during the year"]}
+      - {year: 2026, y: 547.6, original_row_label: "Impact of changes in credit risk", canonical_movement_category: unresolved_movement, mapping_confidence: low, mapping_explanation: "The report names an impact of credit-risk changes but does not identify a narrower parameter movement.", label_fragments: ["Impact of changes in", "credit risk"]}
+      - {year: 2026, y: 615.9, original_row_label: "Changes in opening credit exposures on account of repayments net of additional disbursements and derecognition on transfer of loans", canonical_movement_category: unresolved_movement, mapping_confidence: low, mapping_explanation: "The source combines repayments, additional disbursements and derecognition.", label_fragments: ["Changes in opening credit exposures", "derecognition"]}
+      - {year: 2026, y: 673.4, original_row_label: "New credit exposures during the year, net of repayments and derecognition on transfer of loans", canonical_movement_category: unresolved_movement, mapping_confidence: low, mapping_explanation: "The source combines new exposures with repayments and derecognition.", label_fragments: ["New credit exposures", "derecognition"]}
+      - {year: 2026, y: 698.5, original_row_label: "Amounts written off during the year", canonical_movement_category: write_offs, label_fragments: ["Amounts written off"]}
+      - {year: 2026, y: 712.8, original_row_label: "As at 31 March 2026", canonical_movement_category: closing_balance, row_role: closing, label_fragments: ["As at 31 March 2026"]}
+  - note: "9"
+    table_title: "Analysis of changes in the gross carrying amount and corresponding ECL allowances in relation to loans is as follows"
+    title_anchor: "9 Loans (Contd.)"
+    pdf_page_number: 296
+    pdf_page_index: 295
+    printed_page_number: 263
+    unit: INR_crore
+    population_scope: loans
+    source_footnotes:
+      - "Details of the methodology used for ECL are covered in the credit risk section of note 49."
+    required_anchors: ["Stage 1", "Impairment", "allowance"]
+    stage_columns:
+      - {original_stage_label: "Stage 1", canonical_stage: "Stage 1", source_column_position: impairment_allowance_stage_1, x0: 195, x1: 245}
+      - {original_stage_label: "Stage 2", canonical_stage: "Stage 2", source_column_position: impairment_allowance_stage_2, x0: 295, x1: 340}
+      - {original_stage_label: "Stage 3", canonical_stage: "Stage 3", source_column_position: impairment_allowance_stage_3, x0: 390, x1: 445}
+      - {original_stage_label: "Total", canonical_stage: unresolved, source_column_position: impairment_allowance_total, x0: 495, x1: 545}
+    rows:
+      - {year: 2025, y: 210.8, original_row_label: "As at 31 March 2024", canonical_movement_category: opening_balance, row_role: opening, label_fragments: ["As at 31 March 2024"]}
+      - {year: 2025, y: 239.4, original_row_label: "transfers to stage 1", canonical_movement_category: transfer_to_stage_1, label_fragments: ["transfers to stage 1"]}
+      - {year: 2025, y: 253.7, original_row_label: "transfers to stage 2", canonical_movement_category: transfer_to_stage_2, label_fragments: ["transfers to stage 2"]}
+      - {year: 2025, y: 268.0, original_row_label: "transfers to stage 3", canonical_movement_category: transfer_to_stage_3, label_fragments: ["transfers to stage 3"]}
+      - {year: 2025, y: 282.3, original_row_label: "[unlabeled transfer subtotal]", canonical_movement_category: transfer_subtotal, row_role: subtotal, mapping_confidence: low, mapping_explanation: "The source prints a numeric subtotal after the three transfer rows without a visible row label; it is preserved but excluded from additive reconciliation.", label_fragments: ["Transfers during the year"]}
+      - {year: 2025, y: 307.4, original_row_label: "Impact of changes in credit risk", canonical_movement_category: unresolved_movement, mapping_confidence: low, mapping_explanation: "The report names an impact of credit-risk changes but does not identify a narrower parameter movement.", label_fragments: ["Impact of changes in", "credit risk"]}
+      - {year: 2025, y: 386.5, original_row_label: "Changes in opening credit exposures on account of repayments net of additional disbursements and derecognition on transfer of loans", canonical_movement_category: unresolved_movement, mapping_confidence: low, mapping_explanation: "The source combines repayments, additional disbursements and derecognition.", label_fragments: ["Changes in opening credit exposures", "derecognition"]}
+      - {year: 2025, y: 444.0, original_row_label: "New credit exposures during the year, net of repayments and derecognition on transfer of loans", canonical_movement_category: unresolved_movement, mapping_confidence: low, mapping_explanation: "The source combines new exposures with repayments and derecognition.", label_fragments: ["New credit exposures", "derecognition"]}
+      - {year: 2025, y: 469.1, original_row_label: "Amounts written off during the year", canonical_movement_category: write_offs, label_fragments: ["Amounts written off"]}
+      - {year: 2025, y: 483.4, original_row_label: "As at 31 March 2025", canonical_movement_category: closing_balance, row_role: closing, label_fragments: ["As at 31 March 2025"]}
+output_file: outputs/bajaj_ecl_stage_movement.json

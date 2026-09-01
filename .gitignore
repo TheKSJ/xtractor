@@ -5,3 +5,14 @@ tmp/
 data/raw/AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf
 data/raw/Annual_Report_FY_2025_26_6e549aa38c.pdf
 data/raw/1779168341-UGRO Capital Ltd_Annual Report 2025-26.pdf
+data/raw/*.pdf
+demo-output/
+analyst-output/
+holdout-output/
+temp-demo/
+temp-analysis/
+temp-demo*/
+temp-analysis*/
+build/
+dist/
+*.egg-info/

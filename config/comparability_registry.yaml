@@ -1,0 +1,67 @@
+registry_version: 1
+default:
+  status: unresolved
+  reason: "No explicit semantic rule exists for this metric."
+definitions:
+  loan_amount_assigned:
+    definition: "Amount of loans transferred through assignment as reported by the lender."
+    aggregation_method: "source-reported amount; do not combine unidentified subcolumns"
+  retention_beneficial_economic_interest:
+    definition: "Percentage of beneficial economic interest retained in the transfer population."
+    aggregation_method: "label-level percentage; no weighted aggregation without an independently validated denominator"
+  weighted_average_holding_period:
+    definition: "Source-reported weighted average holding period."
+    aggregation_method: "weighted average; populations must be aligned"
+  weighted_average_maturity:
+    definition: "Source-reported weighted average maturity."
+    aggregation_method: "weighted average; residual maturity is a different definition"
+  weighted_average_residual_maturity:
+    definition: "Source-reported weighted average residual maturity."
+    aggregation_method: "weighted average; not interchangeable with maturity"
+  ecl_stage_movement:
+    definition: "Movement in expected credit loss allowance for the configured loan/advance population and stage."
+    aggregation_method: "additive reconciliation by company, reporting year and canonical stage"
+  closing_balance:
+    definition: "Closing ECL allowance balance for the source stage column."
+    aggregation_method: "period-over-period change only after scope and stage review"
+  transfer_to_stage_1:
+    definition: "Allowance movement reported on the source row for transfers to Stage 1."
+    aggregation_method: "sum only within an aligned population and stage column"
+  transfer_to_stage_2:
+    definition: "Allowance movement reported on the source row for transfers to Stage 2."
+    aggregation_method: "sum only within an aligned population and stage column"
+  transfer_to_stage_3:
+    definition: "Allowance movement reported on the source row for transfers to Stage 3."
+    aggregation_method: "sum only within an aligned population and stage column"
+company_population:
+  Bajaj Finance Limited: "loans_not_in_default"
+  Cholamandalam Investment and Finance Company Limited: "loans_not_in_default"
+  UGRO Capital Limited: "loans_not_in_default_excluding_co_lending"
+  Mahindra & Mahindra Financial Services Limited: "holdout_source_population"
+rules:
+  - id: transfer_same_company_period
+    family: transfer_assignment
+    scope: same_company_periods
+    status: comparable
+    reason: "The same configured lender metric may be compared across periods after source validation."
+  - id: holding_period_years_to_months
+    family: transfer_assignment
+    metric: weighted_average_holding_period
+    status: comparable_after_unit_conversion
+    conversion: "years * 12 = months"
+    reason: "The unit can be converted, but source populations still require review."
+  - id: transfer_cross_lender
+    family: transfer_assignment
+    scope: cross_lender
+    status: comparable_after_scope_review
+    reason: "Assignment tables use lender-specific populations, columns and exclusions."
+  - id: ecl_same_company_period
+    family: ecl_stage_movement
+    scope: same_company_periods
+    status: comparable
+    reason: "Opening and closing balances use the same configured lender population and stage vocabulary."
+  - id: ecl_cross_lender
+    family: ecl_stage_movement
+    scope: cross_lender
+    status: comparable_after_scope_review
+    reason: "Bajaj loans, Chola term loans and UGRO advances are not automatically the same population."

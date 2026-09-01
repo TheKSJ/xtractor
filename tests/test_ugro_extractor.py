@@ -22,6 +22,7 @@ BAJAJ_CONFIG = ROOT / "config" / "bajaj_transfer_assignment.yaml"
 CHOLA_CONFIG = ROOT / "config" / "chola_transfer_assignment.yaml"
 
 
+@unittest.skipUnless((ROOT / "data" / "raw" / "1779168341-UGRO Capital Ltd_Annual Report 2025-26.pdf").is_file(), "real annual-report PDFs not present")
 class UgroExtractionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:

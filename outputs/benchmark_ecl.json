@@ -1,0 +1,82 @@
+{
+  "suite": "ecl_stage_movement",
+  "cases": [
+    {
+      "name": "bajaj_ecl_stage_movement",
+      "expected": 80,
+      "extracted": 80,
+      "reconciliations": 8,
+      "reconciliation_failures": 0,
+      "spot_checks": [
+        {
+          "check": {
+            "config": "config/bajaj_ecl_stage_movement.yaml",
+            "source_document_id": "bajaj_finance_fy2025_26_standalone",
+            "year": 2026,
+            "canonical_stage": "Stage 3",
+            "canonical_movement_category": "closing_balance",
+            "source_column_position": "impairment_allowance_stage_3",
+            "normalized_value": 2859.31
+          },
+          "actual": 2859.31,
+          "status": "passed"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "name": "chola_ecl_stage_movement",
+      "expected": 80,
+      "extracted": 80,
+      "reconciliations": 8,
+      "reconciliation_failures": 0,
+      "spot_checks": [
+        {
+          "check": {
+            "config": "config/chola_ecl_stage_movement.yaml",
+            "source_document_id": "chola_finance_fy2025_26_standalone",
+            "year": 2026,
+            "canonical_stage": "Stage 1",
+            "canonical_movement_category": "opening_balance",
+            "source_column_position": "impairment_allowance_stage_1",
+            "normalized_value": 631.46
+          },
+          "actual": 631.46,
+          "status": "passed"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "name": "ugro_ecl_stage_movement",
+      "expected": 80,
+      "extracted": 80,
+      "reconciliations": 10,
+      "reconciliation_failures": 0,
+      "spot_checks": [
+        {
+          "check": {
+            "config": "config/ugro_ecl_stage_movement.yaml",
+            "source_document_id": "ugro_capital_fy2025_26_standalone",
+            "year": 2026,
+            "canonical_stage": "Stage 3",
+            "canonical_movement_category": "closing_balance",
+            "source_column_position": "stage_3",
+            "normalized_value": 12333.69
+          },
+          "actual": 12333.69,
+          "status": "passed"
+        }
+      ],
+      "status": "passed"
+    }
+  ],
+  "overall": {
+    "expected": 240,
+    "extracted": 240,
+    "reconciliation_failures": 0,
+    "spot_checks": 3,
+    "spot_check_failures": 0,
+    "status": "passed"
+  }
+}

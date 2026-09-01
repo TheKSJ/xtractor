@@ -1,0 +1,50 @@
+disclosure_family: ecl_stage_movement
+document:
+  company: "Cholamandalam Investment and Finance Company Limited"
+  reporting_period: "Year ended 31 March 2026"
+  statement_scope: standalone
+source:
+  document_id: chola_finance_fy2025_26_standalone
+  manifest_file: config/source_manifest.yaml
+  source_file: data/raw/Annual_Report_FY_2025_26_6e549aa38c.pdf
+tables:
+  - note: "9.1"
+    table_title: "An analysis of changes in the gross carrying amount and corresponding ECL allowances in relations to loans"
+    title_anchor: "An analysis of changes in the gross carrying amount"
+    pdf_page_number: 173
+    pdf_page_index: 172
+    printed_page_number: 173
+    unit: INR_crore
+    population_scope: term_loans
+    source_footnotes:
+      - "ECL across stages have been computed on collective basis."
+      - "The Company uses days past due of the customer to determine the credit quality of loans."
+      - "Write off includes loss on disposal of collateral."
+    required_anchors: ["Term loans", "Gross Carrying amount", "Impairment allowance", "Stage 1"]
+    stage_columns:
+      - {original_stage_label: "Stage 1", canonical_stage: "Stage 1", source_column_position: impairment_allowance_stage_1, x0: 390, x1: 425}
+      - {original_stage_label: "Stage 2", canonical_stage: "Stage 2", source_column_position: impairment_allowance_stage_2, x0: 430, x1: 470}
+      - {original_stage_label: "Stage 3", canonical_stage: "Stage 3", source_column_position: impairment_allowance_stage_3, x0: 465, x1: 510}
+      - {original_stage_label: "Total", canonical_stage: unresolved, source_column_position: impairment_allowance_total, x0: 510, x1: 550}
+    rows:
+      - {year: 2026, y: 211.5, original_row_label: "Opening as on April 1, 2025", canonical_movement_category: opening_balance, row_role: opening, label_fragments: ["Opening as on April 1, 2025"]}
+      - {year: 2026, y: 220.9, original_row_label: "New assets originated / Increase in existing assets (Net)", canonical_movement_category: unresolved_movement, mapping_confidence: low, mapping_explanation: "The source combines new originations and changes in existing assets.", label_fragments: ["New assets originated", "Increase in existing assets"]}
+      - {year: 2026, y: 239.7, original_row_label: "Exposure de-recognised / matured / repaid", canonical_movement_category: assets_derecognised_or_repaid, label_fragments: ["Exposure de-recognised", "matured", "repaid"]}
+      - {year: 2026, y: 249.1, original_row_label: "Transfer to Stage 1", canonical_movement_category: transfer_to_stage_1, label_fragments: ["Transfer to Stage 1"]}
+      - {year: 2026, y: 258.5, original_row_label: "Transfer to Stage 2", canonical_movement_category: transfer_to_stage_2, label_fragments: ["Transfer to Stage 2"]}
+      - {year: 2026, y: 267.9, original_row_label: "Transfer to Stage 3", canonical_movement_category: transfer_to_stage_3, label_fragments: ["Transfer to Stage 3"]}
+      - {year: 2026, y: 277.3, original_row_label: "Impact on account of exposures transferred during the period between stages", canonical_movement_category: unresolved_movement, mapping_confidence: low, mapping_explanation: "The source reports an impact related to transfers but does not identify a separate economic category.", label_fragments: ["Impact on account of exposures", "between stages"]}
+      - {year: 2026, y: 296.1, original_row_label: "Impact of changes on items within the same stage", canonical_movement_category: impact_of_changes_within_stage, mapping_confidence: medium, mapping_explanation: "Source wording is retained; it is not treated as a specific risk-parameter change.", label_fragments: ["Impact of changes on items", "within the same stage"]}
+      - {year: 2026, y: 314.9, original_row_label: "Write off*", canonical_movement_category: write_offs, label_fragments: ["Write off"]}
+      - {year: 2026, y: 324.0, original_row_label: "Closing as on March 31, 2026", canonical_movement_category: closing_balance, row_role: closing, label_fragments: ["Closing as on March 31, 2026"]}
+      - {year: 2025, y: 606.4, original_row_label: "Opening as on April 1, 2024", canonical_movement_category: opening_balance, row_role: opening, label_fragments: ["Opening as on April 1, 2024"]}
+      - {year: 2025, y: 615.8, original_row_label: "New assets originated", canonical_movement_category: new_assets_originated_or_purchased, label_fragments: ["New assets originated"]}
+      - {year: 2025, y: 625.2, original_row_label: "Exposure de-recognised / matured / repaid", canonical_movement_category: assets_derecognised_or_repaid, label_fragments: ["Exposure de-recognised", "matured", "repaid"]}
+      - {year: 2025, y: 634.6, original_row_label: "Transfer to Stage 1", canonical_movement_category: transfer_to_stage_1, label_fragments: ["Transfer to Stage 1"]}
+      - {year: 2025, y: 644.0, original_row_label: "Transfer to Stage 2", canonical_movement_category: transfer_to_stage_2, label_fragments: ["Transfer to Stage 2"]}
+      - {year: 2025, y: 653.4, original_row_label: "Transfer to Stage 3", canonical_movement_category: transfer_to_stage_3, label_fragments: ["Transfer to Stage 3"]}
+      - {year: 2025, y: 662.8, original_row_label: "Impact on account of exposures transferred during the period between stages", canonical_movement_category: unresolved_movement, mapping_confidence: low, mapping_explanation: "The source reports an impact related to transfers but does not identify a separate economic category.", label_fragments: ["Impact on account of exposures", "between stages"]}
+      - {year: 2025, y: 681.6, original_row_label: "Impact of changes on items within the same stage", canonical_movement_category: impact_of_changes_within_stage, mapping_confidence: medium, mapping_explanation: "Source wording is retained; it is not treated as a specific risk-parameter change.", label_fragments: ["Impact of changes on items", "within the same stage"]}
+      - {year: 2025, y: 700.4, original_row_label: "Write off*", canonical_movement_category: write_offs, label_fragments: ["Write off"]}
+      - {year: 2025, y: 709.5, original_row_label: "Closing as on March 31, 2025", canonical_movement_category: closing_balance, row_role: closing, label_fragments: ["Closing as on March 31, 2025"]}
+output_file: outputs/chola_ecl_stage_movement.json

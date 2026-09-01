@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "config" / "bajaj_transfer_assignment.yaml"
 
 
+@unittest.skipUnless((ROOT / "data" / "raw" / "AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf").is_file(), "real annual-report PDFs not present")
 class ConfigurationTests(unittest.TestCase):
     def test_loads_config_and_exact_source_path_exists(self) -> None:
         config = load_config(CONFIG)
@@ -42,6 +43,7 @@ class PageValidationTests(unittest.TestCase):
             validate_page(page_count=515, page_number=391, page_index=391)
 
 
+@unittest.skipUnless((ROOT / "data" / "raw" / "AR_29642_BAJFINANCE_2025_2026_A_23098027_07072026220255.pdf").is_file(), "real annual-report PDFs not present")
 class ExtractionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
