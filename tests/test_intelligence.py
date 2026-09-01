@@ -176,6 +176,7 @@ output_file: output.json
             for name in ("records.json", "comparability_matrix.json", "calculations.json", "validation_report.json", "warnings.json", "overrides.json", "analyst_brief.html", "demo_manifest.json"):
                 self.assertTrue((output / name).is_file(), name)
             brief = (output / "analyst_brief.md").read_text(encoding="utf-8")
+            self.assertIn("SYNTHETIC DEMO", brief)
             self.assertIn("Cross-lender comparison", brief)
             for label in ("[observed_fact]", "[mechanical_calculation]", "[financial_interpretation]", "[unresolved_question]"):
                 self.assertIn(label, brief)

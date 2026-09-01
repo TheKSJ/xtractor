@@ -71,7 +71,7 @@ The legacy transfer extractor remains in place and its 52-record benchmark is un
 
 **Technical: How are silent extraction errors limited?** The recipe checks hashes, page/index agreement, anchors, cell boundaries, complete values, expected counts and stable IDs; failures are explicit.
 
-**Technical: How are duplicate records handled?** The reporting loader deduplicates stable record IDs, while source extraction and benchmark validation retain expected denominators and flag count mismatches.
+**Technical: How are duplicate records handled?** The reporting loader raises on duplicate stable identities instead of silently dropping them, while source extraction and benchmark validation retain expected denominators and flag count mismatches.
 
 **Technical: Why use Decimal?** Financial arithmetic and residual comparisons should not depend on binary floating-point rounding.
 

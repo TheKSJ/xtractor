@@ -153,6 +153,8 @@ def write_analysis_bundle(records: list[dict[str, Any]], analysis: dict[str, Any
         "reconciliation_residual": sum(1 for r in analysis.get("reconciliations", []) if r.get("status") == "residual"),
     })
     markdown = _brief_markdown(records, analysis)
+    if metadata and metadata.get("demo"):
+        markdown = "# SYNTHETIC DEMO — NOT A REAL BENCHMARK\n\nThis bundle contains deterministic synthetic records only; do not combine it with known-report benchmark results.\n\n" + markdown
     (target / "analyst_brief.md").write_text(markdown, encoding="utf-8")
     body = html.escape(markdown).replace("\n", "<br>\n")
     (target / "analyst_brief.html").write_text("<!doctype html><html><head><meta charset='utf-8'><title>Lender brief</title><style>body{font:16px system-ui;max-width:1100px;margin:2rem auto;padding:0 1rem;line-height:1.5;color:#202124}br{display:block;margin:.25rem}</style></head><body>" + body + "</body></html>\n", encoding="utf-8")
