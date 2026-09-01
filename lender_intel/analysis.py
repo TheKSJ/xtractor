@@ -7,6 +7,7 @@ from decimal import Decimal, InvalidOperation
 from typing import Any
 
 from .comparability import _fallback_id, build_comparability_matrix, load_registry
+from .errors import ComparabilityError
 
 
 BLOCKED = {"comparable_after_scope_review", "label_only", "unresolved", "not_comparable"}
@@ -122,7 +123,11 @@ def period_changes(records: list[dict[str, Any]], matrix: list[dict[str, Any]]) 
 
 def analyze_records(records: list[dict[str, Any]], registry: dict[str, Any] | None = None, overrides: dict[str, dict[str, Any]] | None = None) -> dict[str, Any]:
     registry = registry or load_registry()
+    overrides = overrides or {}
     matrix = build_comparability_matrix(records, registry, overrides)
+    unused_overrides = sorted(set(overrides) - {str(item.get("comparison_id")) for item in matrix})
+    if unused_overrides:
+        raise ComparabilityError(f"Override IDs do not match any comparison: {unused_overrides}")
     calculations = period_changes(records, matrix)
     reconciliations = reconcile_ecl(records)
     calculations.extend(ecl_transfer_effects(records))
@@ -132,6 +137,7 @@ def analyze_records(records: list[dict[str, Any]], registry: dict[str, Any] | No
         "calculations": calculations,
         "reconciliations": reconciliations,
         "warnings": warnings,
+        "overrides": [overrides[key] for key in sorted(overrides)],
         "summary": {
             "record_count": len(records),
             "comparison_count": len(matrix),

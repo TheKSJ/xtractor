@@ -33,6 +33,9 @@ definitions:
   transfer_to_stage_3:
     definition: "Allowance movement reported on the source row for transfers to Stage 3."
     aggregation_method: "sum only within an aligned population and stage column"
+  changes_in_ead:
+    definition: "Source-reported allowance movement attributed to changes in exposure at default."
+    aggregation_method: "preserve as an EAD-related movement; do not relabel as foreign exchange or a stage transfer"
 company_population:
   Bajaj Finance Limited: "loans_not_in_default"
   Cholamandalam Investment and Finance Company Limited: "loans_not_in_default"

@@ -108,6 +108,8 @@ def compare_records(
         status, reason = "not_comparable", "Canonical stage differs; source stage meanings cannot be merged."
     elif left.get("canonical_stage") == "unresolved" or right.get("canonical_stage") == "unresolved":
         status, reason = "unresolved", "At least one source stage is unresolved; no stage-level calculation is permitted."
+    elif not left.get("unit") or not right.get("unit"):
+        status, reason = "unresolved", "A source unit is missing; no calculation is permitted."
     elif left.get("statement_scope") != right.get("statement_scope"):
         status, reason = "comparable_after_scope_review", "Statement scope differs."
     elif _scope(left, registry) != _scope(right, registry):
@@ -116,6 +118,8 @@ def compare_records(
         status, reason = "comparable_after_scope_review", "Source footnotes or exclusions differ."
     elif conversion:
         status, reason = "comparable_after_unit_conversion", "Units differ but an explicit mechanical conversion is available."
+    elif left.get("unit") != right.get("unit"):
+        status, reason = "not_comparable", "Units differ and no explicit conversion is available."
     elif relation == "cross_lender":
         status, reason = "comparable_after_scope_review", "Cross-lender scope and aggregation review is required."
     if metric_left in {"rating_wise_distribution_rated_loans", "coverage_tangible_security"} and (left.get("normalized_value") is None or right.get("normalized_value") is None):
@@ -164,9 +168,9 @@ def build_comparability_matrix(
         years = sorted(by_year)
         if len(years) >= 2:
             matrix.append(compare_records(by_year[years[-2]], by_year[years[-1]], registry, relation="same_company_periods", overrides=overrides))
-    latest: dict[tuple[str, str, str, str, str], dict[str, Any]] = {}
+    latest: dict[tuple[str, str, str, str, str, str], dict[str, Any]] = {}
     for record in records:
-        key = (_family(record), _metric(record), str(record.get("canonical_stage", "")), str(record.get("year", "")), str(record.get("source_column_position", "")))
+        key = (_family(record), _metric(record), str(record.get("canonical_stage", "")), str(record.get("year", "")), str(record.get("source_column_position", "")), str(record.get("company", "")))
         latest.setdefault(key, record)
     for key, left in latest.items():
         peers = [r for k, r in latest.items() if k[:3] == key[:3] and (key[0] == "ecl_stage_movement" or k[4] == key[4]) and r.get("company") != left.get("company")]

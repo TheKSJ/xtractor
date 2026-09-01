@@ -18,6 +18,8 @@ Notes-level disclosures are difficult because annual reports mix printed and PDF
 
 The known transfer benchmark is 52/52 complete records: Bajaj 24/24, Chola 14/14 and UGRO 14/14. The ECL benchmark is 240/240 structurally extracted records with 26/26 reconciliation groups passing. These are configured-report results, not unseen-report accuracy.
 
+The current verification suite contains 49 passing tests with the local report PDFs present, including legacy regressions, synthetic extraction, semantic blocking, override publication, duplicate detection and report generation. CI runs the PDF-free subset plus the synthetic end-to-end path.
+
 | Benchmark case | Expected | Extracted | Reconciliations | Result |
 |---|---:|---:|---:|---|
 | Bajaj ECL loans | 80 | 80 | 8/8 pass | passed |
@@ -37,7 +39,7 @@ lender-intel analyze --input outputs --output analyst-output
 
 Real annual-report PDFs are ignored by Git. Put them under `data/raw/` and verify SHA-256 values in `config/source_manifest.yaml`. The synthetic demo and CI do not require those PDFs.
 
-The demo writes `records.json`, `records.csv`, `comparability_matrix.json`, `validation_report.json`, `warnings.json`, `analyst_brief.md` and `analyst_brief.html`. To reproduce the documented holdout workflow locally, run `lender-intel holdout --config config\mahindra_holdout_transfer_assignment.yaml --output holdout-output` after downloading the manifest PDF.
+The demo writes `records.json`, `records.csv`, `comparability_matrix.json`, `validation_report.json`, `warnings.json`, `overrides.json`, `analyst_brief.md` and `analyst_brief.html`. To reproduce the documented holdout workflow locally, run `lender-intel holdout --config config\mahindra_holdout_transfer_assignment.yaml --output holdout-output` after downloading the manifest PDF.
 
 ## Architecture
 

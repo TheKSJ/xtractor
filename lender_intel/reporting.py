@@ -14,6 +14,7 @@ def load_records(path: str | Path) -> list[dict[str, Any]]:
     candidates = [source] if source.is_file() else sorted(source.rglob("*.json"))
     records: list[dict[str, Any]] = []
     seen: set[str] = set()
+    duplicates: list[str] = []
     for candidate in candidates:
         if any(part.lower() in {"baseline", "benchmark_transfer_assignment.json"} for part in candidate.parts):
             continue
@@ -29,6 +30,10 @@ def load_records(path: str | Path) -> list[dict[str, Any]]:
                 if identity not in seen:
                     seen.add(identity)
                     records.append(record)
+                else:
+                    duplicates.append(identity)
+    if duplicates:
+        raise ValueError(f"Duplicate record identities found under {source}: {sorted(set(duplicates))}")
     return records
 
 
@@ -76,6 +81,14 @@ def _brief_markdown(records: list[dict[str, Any]], analysis: dict[str, Any]) -> 
                 lines.append(f"- [mechanical_calculation] {change.get('from_year')} to {change.get('to_year')}: absolute change {change.get('absolute_change')}, percentage change {change.get('percentage_change')}%.")
             else:
                 lines.append(f"- [unresolved_question] Calculation unavailable: {change.get('reason')}")
+    lines.extend(["", "## Observed facts", ""])
+    if records:
+        for record in records[:25]:
+            value = record.get("raw_value")
+            lines.append(f"- [observed_fact] `{record.get('company')}` `{record.get('original_row_label')}` year {record.get('year')}: source value `{value}` {record.get('unit') or ''}, PDF page {record.get('pdf_page_number')}.")
+    else:
+        lines.append("No source records were available.")
+    lines.extend(["", "## Financial interpretation (cautious)", "", "- [financial_interpretation] A mechanical change in transfer activity or ECL allowance may warrant review of exposure mix, stage migration, assumptions and portfolio scope; this report does not establish causality or an investment conclusion."])
     lines.extend(["", "## ECL movements", ""])
     for item in analysis.get("calculations", []):
         if item.get("calculation") == "net_transfer_effect_on_allowance":
@@ -96,6 +109,16 @@ def _brief_markdown(records: list[dict[str, Any]], analysis: dict[str, Any]) -> 
         lines.append(f"- `{decision['comparison_id']}` `{decision['status']}`: {decision['reason']}")
     if not blocked:
         lines.append("No blocked comparisons.")
+    lines.extend(["", "## Uncertainty and unresolved questions", ""])
+    unresolved = [d for d in analysis.get("comparability_matrix", []) if d.get("status") in {"label_only", "unresolved", "not_comparable", "comparable_after_scope_review"}]
+    residuals = [r for r in analysis.get("reconciliations", []) if r.get("status") != "passed"]
+    if not unresolved and not residuals:
+        lines.append("No unresolved comparisons or reconciliation residuals.")
+    else:
+        for decision in unresolved[:100]:
+            lines.append(f"- [unresolved_question] `{decision['comparison_id']}` `{decision['status']}`: {decision['reason']}")
+        for residual in residuals[:100]:
+            lines.append(f"- [unresolved_question] Reconciliation for {residual.get('company')} {residual.get('year')} {residual.get('canonical_stage')}: {residual.get('reason')} (residual {residual.get('residual', 'n/a')}).")
     lines.extend(["", "## Transfer-assignment observations", "", "Source labels, units, unidentified subcolumns, exclusions, and missing values remain visible in records.json. Unit conversion is not evidence of economic comparability.", "", "## Data-quality warnings", ""])
     if analysis.get("warnings"):
         for warning in analysis["warnings"][:100]:
@@ -123,6 +146,7 @@ def write_analysis_bundle(records: list[dict[str, Any]], analysis: dict[str, Any
     _write_json(target / "calculations.json", analysis.get("calculations", []))
     _write_json(target / "validation_report.json", {"summary": analysis.get("summary", {}), "reconciliations": analysis.get("reconciliations", [])})
     _write_json(target / "warnings.json", analysis.get("warnings", []))
+    _write_json(target / "overrides.json", analysis.get("overrides", []))
     _write_json(target / "error_taxonomy.json", {
         "scope_mismatch": sum(1 for w in analysis.get("warnings", []) if w.get("status") == "comparable_after_scope_review"),
         "comparison_blocked": sum(1 for w in analysis.get("warnings", []) if w.get("status") in {"label_only", "unresolved", "not_comparable"}),

@@ -31,6 +31,8 @@ lender-intel analyze --input outputs --output analyst-output
 
 Every configured source is checked against its SHA-256 and repository path. The transfer benchmark keeps all 52 expected records in its denominator (Bajaj 24, Chola 14, UGRO 14). The ECL benchmark expects 240 records (80 per lender), runs 26 arithmetic reconciliation groups and checks three independently transcribed spot values.
 
+The transfer benchmark also prints runtime measurements. Those timing fields are intentionally volatile and are not used in correctness comparisons; record counts, field matches, missing records and duplicate counts are the reproducible audit results.
+
 ## Holdout reproduction
 
 The Mahindra report was obtained from the official URL in the manifest. Its SHA-256, retrieval date, period and standalone scope are recorded. After downloading it to the configured `data/raw/` path, run:
