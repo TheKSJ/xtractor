@@ -5,7 +5,7 @@
 - Independent maintenance audit verified the clean-install workflow and all real-report benchmarks.
 - Corrected UGRO EAD movement vocabulary, added explicit unit-conversion calculations, duplicate-input failures and `overrides.json` publication.
 - Analyst briefs now label observed facts, mechanical calculations, cautious interpretation and unresolved questions separately.
-- Synthetic demo briefs carry an explicit non-benchmark notice; the learning guide now matches duplicate-failure behavior.
+- Synthetic demo and derived analyst briefs carry an explicit non-benchmark notice; the learning guide now matches duplicate-failure behavior.
 
 ## 0.2.0
 

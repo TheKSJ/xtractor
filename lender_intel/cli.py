@@ -74,7 +74,17 @@ def _analyze(args: argparse.Namespace) -> int:
         raise LenderIntelError(f"No extraction result JSON records found under {args.input}")
     overrides = load_overrides(args.override_file)
     analysis = analyze_records(records, load_registry(args.registry), overrides)
-    output = write_analysis_bundle(records, analysis, args.output, metadata={"registry": args.registry, "override_file": args.override_file})
+    metadata = {"registry": args.registry, "override_file": args.override_file}
+    manifest = Path(args.input) / "demo_manifest.json"
+    if manifest.is_file():
+        try:
+            manifest_data = json.loads(manifest.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            manifest_data = {}
+        if isinstance(manifest_data, dict) and manifest_data.get("synthetic") is True:
+            metadata["demo"] = True
+            metadata["synthetic"] = True
+    output = write_analysis_bundle(records, analysis, args.output, metadata=metadata)
     print(f"Wrote analyst bundle to {output}")
     return 0
 

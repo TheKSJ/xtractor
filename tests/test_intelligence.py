@@ -180,6 +180,9 @@ output_file: output.json
             self.assertIn("Cross-lender comparison", brief)
             for label in ("[observed_fact]", "[mechanical_calculation]", "[financial_interpretation]", "[unresolved_question]"):
                 self.assertIn(label, brief)
+            analyzed = Path(directory) / "analyzed"
+            self.assertEqual(cli_main(["analyze", "--input", str(output), "--output", str(analyzed)]), 0)
+            self.assertIn("SYNTHETIC DEMO", (analyzed / "analyst_brief.md").read_text(encoding="utf-8"))
 
     def test_analyze_cli_returns_actionable_error_for_empty_input(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
